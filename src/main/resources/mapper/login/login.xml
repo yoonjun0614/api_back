@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.api.api.login.mapper.LoginMapper">
+
+
+
+    <select id="getLoginIdchack" parameterType="com.api.api.login.vo.LoginVO" resultType="com.api.api.login.vo.LoginVO">
+        /** getLoginInfo **/
+        SELECT uid, login_id as loginId, name, `password`, email, phone , date_format(reg_dt, '%Y-%m-%d %H:%i:%s') as regDt, date_format(upt_dt, '%Y-%m-%d %H:%i:%s') as uptDt
+        FROM project.`user`
+        WHERE 1=1
+        <if test="loginId !=null">
+            AND login_id =#{loginId}
+        </if>
+    </select>
+
+    <select id="getLoginInfo" parameterType="com.api.api.login.vo.LoginVO" resultType="com.api.api.login.vo.LoginVO">
+        /** getLoginInfo **/
+        SELECT uid, login_id as loginId, name, `password`, email, phone, date_format(reg_dt, '%Y-%m-%d %H:%i:%s') as regDt, date_format(upt_dt, '%Y-%m-%d %H:%i:%s') as uptDt
+        FROM project.`user`
+        WHERE 1=1
+        <if test="loginId !=null">
+            AND login_id =#{loginId}
+        </if>
+        <if test="password !=null">
+            AND password =#{password}
+        </if>
+    </select>
+</mapper>
