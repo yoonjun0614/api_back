@@ -1,13 +1,17 @@
 package com.api.api.login.service;
 
-import com.api.api.login.vo.LoginVO;
 
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.api.api.login.vo.LoginVO;
 
 public interface LoginService {
 
-    List<LinkedHashMap> getLoginInfo(LoginVO vo);
+    LoginVO getLoginIdchack(LoginVO vo);
 
-    List<LinkedHashMap> getLoginIdchack(String loginId);
+    LoginVO getLoginInfo(LoginVO vo);
+
+    LoginVO getFindId(LoginVO vo);
+
+    LoginVO getFindPasswordPhone(LoginVO vo);
+
+    void putPasswordUpdate(LoginVO vo);
 }

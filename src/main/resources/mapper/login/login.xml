@@ -3,8 +3,6 @@
 
 <mapper namespace="com.api.api.login.mapper.LoginMapper">
 
-
-
     <select id="getLoginIdchack" parameterType="com.api.api.login.vo.LoginVO" resultType="com.api.api.login.vo.LoginVO">
         /** getLoginInfo **/
         SELECT uid, login_id as loginId, name, `password`, email, phone , date_format(reg_dt, '%Y-%m-%d %H:%i:%s') as regDt, date_format(upt_dt, '%Y-%m-%d %H:%i:%s') as uptDt
@@ -27,4 +25,37 @@
             AND password =#{password}
         </if>
     </select>
+
+    <select id="getFindId" parameterType="com.api.api.login.vo.LoginVO" resultType="com.api.api.login.vo.LoginVO">
+        /** getLoginInfo **/
+        SELECT uid, login_id as loginId, name, `password`, email, phone, date_format(reg_dt, '%Y-%m-%d %H:%i:%s') as regDt, date_format(upt_dt, '%Y-%m-%d %H:%i:%s') as uptDt
+        FROM project.`user`
+        WHERE 1=1
+        <if test="email !=null">
+            AND email =#{email}
+        </if>
+    </select>
+
+    <select id="getFindPasswordPhone" parameterType="com.api.api.login.vo.LoginVO" resultType="com.api.api.login.vo.LoginVO">
+        /** getLoginInfo **/
+        SELECT uid, login_id as loginId, name, `password`, email, phone, date_format(reg_dt, '%Y-%m-%d %H:%i:%s') as regDt, date_format(upt_dt, '%Y-%m-%d %H:%i:%s') as uptDt
+        FROM project.`user`
+        WHERE 1=1
+        <if test="loginId !=null">
+            AND login_id =#{loginId}
+        </if>
+        <if test="phone !=null">
+            AND phone = #{phone}
+        </if>
+    </select>
+
+    <update id="putPasswordUpdate" parameterType="com.api.api.login.vo.LoginVO">
+        UPDATE project.`user`
+        SET password = #{password},
+            upt_dt=CURRENT_TIMESTAMP
+        WHERE login_id=#{loginId}
+    </update>
+
+
+
 </mapper>

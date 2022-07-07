@@ -19,5 +19,6 @@ public class LoginVO {
     private String department;
     private String regDt;
     private String uptDt;
+    private String message;
 
 }

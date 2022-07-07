@@ -6,8 +6,7 @@ import com.api.api.login.vo.LoginVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.HashMap;
 
 @Service("LoginService")
 public class LoginServiceImpl implements LoginService {
@@ -16,12 +15,27 @@ public class LoginServiceImpl implements LoginService {
     private LoginMapper loginMapper;
 
     @Override
-    public List<LinkedHashMap> getLoginInfo(LoginVO vo) {
+    public LoginVO getLoginIdchack(LoginVO vo) {
+        return loginMapper.getLoginIdchack(vo);
+    }
+
+    @Override
+    public LoginVO getLoginInfo(LoginVO vo) {
         return loginMapper.getLoginInfo(vo);
     }
 
     @Override
-    public List<LinkedHashMap> getLoginIdchack(String loginId) {
-        return loginMapper.getLoginIdchack(loginId);
+    public LoginVO getFindId(LoginVO vo) {
+        return loginMapper.getFindId(vo);
+    }
+
+    @Override
+    public LoginVO getFindPasswordPhone(LoginVO vo) {
+        return loginMapper.getFindPasswordPhone(vo);
+    }
+
+    @Override
+    public void putPasswordUpdate(LoginVO vo) {
+        loginMapper.putPasswordUpdate(vo);
     }
 }

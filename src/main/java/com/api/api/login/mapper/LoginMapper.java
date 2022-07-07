@@ -1,13 +1,19 @@
 package com.api.api.login.mapper;
 
+
 import com.api.api.login.vo.LoginVO;
 
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.HashMap;
 
 public interface LoginMapper {
 
-    List<LinkedHashMap> getLoginInfo(LoginVO vo);
+    LoginVO getLoginInfo(LoginVO vo);
 
-    List<LinkedHashMap> getLoginIdchack(String loginId);
+    LoginVO getLoginIdchack(LoginVO vo);
+
+    LoginVO getFindId(LoginVO vo);
+
+    LoginVO getFindPasswordPhone(LoginVO vo);
+
+    void putPasswordUpdate(LoginVO vo);
 }
