@@ -35,6 +35,10 @@ dependencies {
     implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.3'
     implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
+
+
+
 }
 
 tasks.named('test') {
